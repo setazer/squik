@@ -28,10 +28,11 @@ def imgurize(message):
     file_obj = bot.get_file(file_id)
 
     file = bot.download_file(file_obj.file_path)
-    with open(file_obj.file_path, 'wb') as f:
+    filename = file_obj.file_path.replace('photos/', '')
+    with open(filename, 'wb') as f:
         f.write(file)
 
-    uploaded_image = im.upload_image(path=file_obj.file_path, album=config['IMGUR_ALBUM_ID'])
+    uploaded_image = im.upload_image(path=filename, album=config['IMGUR_ALBUM_ID'])
     send_message(message.chat.id, "Ссылка на Imgur'е", reply_markup=gen_imgur_markup(uploaded_image.link))
-    os.remove(file_obj.file_path)
+    os.remove(filename)
     # edit_markup(message.chat.id,message.message_id,reply_markup=gen_imgur_markup(uploaded_image.link))
