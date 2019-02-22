@@ -28,7 +28,7 @@ config = {
     'EXTERNAL_HOST': environ.get('EXTERNAL_HOST', 'host.name'),
     'EXTERNAL_PORT': int(environ.get('EXTERNAL_PORT', '8443')),  # 80/443/88/8443
     'WEBHOOK_LISTEN': environ.get('WEBHOOK_LISTEN', '0.0.0.0'),
-    'INTERNAL_PORT': int(environ.get('INTERNAL_PORT', '1234')),
+    'INTERNAL_PORT': int(environ.get('PORT', '8237')),
 
     'WEBHOOK_URL': environ.get('WEBHOOK_URL', 'https://localhost/'),
 
