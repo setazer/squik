@@ -35,8 +35,8 @@ class Setting(Base):
 #                                                                          host=DB_HOST,
 #                                                                          port=DB_PORT, db=DB_NAME)
 try:
-    conn_string = f"mysql+mysqldb://{config['DB_USER']}:{config['DB_PASSWORD']}@{config['DB_HOST']}:{config[
-        'DB_PORT']}/{config['DB_NAME']}"
+    conn_string = f"mysql+mysqldb://{config['DB_USER']}:{config['DB_PASSWORD']}@{config['DB_HOST']}" \
+        f":{config['DB_PORT']}/{config['DB_NAME']}"
     engine = create_engine(conn_string)
     Base.metadata.create_all(engine)
 except (OperationalError, Exception):
