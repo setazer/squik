@@ -7,7 +7,7 @@ import telebot
 
 import importdir
 import util
-from bot_mng import bot, send_message, edit_message, msg_to_owner
+from bot_mng import bot, edit_message, msg_to_owner, send_chat_action
 from config import config
 from db_mng import User, session_scope
 
@@ -67,7 +67,7 @@ def main():
     #     pass
 
     for user in (user for user, user_data in bot.users.items() if user_data['access'] > 1):
-        send_message(user, "I'm alive!", disable_notification=True)
+        send_chat_action(user, 'typing')
     for i in range(1, 5):
         try:
             # bot.remove_webhook()

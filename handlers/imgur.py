@@ -3,7 +3,7 @@ import os
 import pyimgur
 from telebot.types import InlineKeyboardMarkup, InlineKeyboardButton
 
-from bot_mng import bot, send_message
+from bot_mng import bot, send_message, send_chat_action
 # auth_url = im.authorization_url('pin')
 # webbrowser.open(auth_url)
 # pin = input("What is the pin?")
@@ -38,7 +38,7 @@ def imgurize(message):
     filename = file_obj.file_path.replace('photos/', '')
     with open(filename, 'wb') as f:
         f.write(file)
-
+    send_chat_action(message.chat.id, 'upload_photo')
     uploaded_image = im.upload_image(path=filename, album=config['IMGUR_ALBUM_ID'])
     send_message(message.chat.id, "Ссылка на Imgur'е", reply_markup=gen_imgur_markup(uploaded_image.link))
     os.remove(filename)

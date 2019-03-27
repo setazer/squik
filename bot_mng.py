@@ -98,6 +98,10 @@ def forward_message(chat_id, from_chat_id, message_id, disable_notification=None
 
 
 @bot.action
+def send_chat_action(chat_id, action):
+    return bot.send_chat_action(chat_id=chat_id, action=action)
+
+@bot.action
 def send_photo(chat_id, photo_filename, caption=None, reply_to_message_id=None, reply_markup=None,
                disable_notification=None):
     if os.path.exists(photo_filename):
