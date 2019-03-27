@@ -15,6 +15,13 @@ from config import config
 def gen_imgur_markup(url):
     markup = InlineKeyboardMarkup()
     markup.row(InlineKeyboardButton(text="Direct", url=url))
+    markup.row(InlineKeyboardButton(text="IQDB", url=f"http://iqdb.org/?url={url}"),
+               InlineKeyboardButton(text="Google",
+                                    url=f"https://www.google.com/searchbyimage?image_url={url}&hl=ru&newwindow=1"))
+    markup.row(InlineKeyboardButton(text="Trace.moe", url=f"https://trace.moe/?url={url}"),
+               InlineKeyboardButton(text="SauceNao",
+                                    url=f"https://saucenao.com/search.php?db=999&dbmaski=32768&url={url}"),
+               InlineKeyboardButton(text="TinEye", url=f"https://tineye.com/search?url={url}"))
     return markup
 
 
