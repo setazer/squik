@@ -33,7 +33,7 @@ def start(message):
 
     elif bot.users[message.chat.id]['access'] == 0:
         send_message(message.chat.id, "Повторная заявка на регистрацию отправлена администратору.")
-        send_message(OWNER_ID,
+        send_message(config['OWNER_ID'],
                      f"Повторная регистрация: {message.from_user.username} ({message.chat.id})",
                      reply_markup=gen_user_markup(message.chat.id))
 
