@@ -24,6 +24,5 @@ def shutdown(message):
             ls_setting = Setting(setting='last_shutdown', value=f'{message.chat.id}_{message.message_id}')
             session.merge(ls_setting)
     msg_to_owner("Останавливаюсь...")
-    # shutdown_server()
     bot.stop_polling()
-    bot.shutting_down = True
+    shutdown_server()
