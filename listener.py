@@ -9,14 +9,16 @@ import importdir
 import util
 from bot_mng import bot, msg_to_owner, send_chat_action
 from config import config
-from db_mng import User, session_scope
+
+
+# from db_mng import User, session_scope
 
 
 def load_users():
     o_logger.debug("Loading users")
-    with session_scope() as session:
-        bot.users = {user: {"access": access, "limit": limit} for user, access, limit in
-                     session.query(User.user_id, User.access, User.limit).all()}
+    # with session_scope() as session:
+    #     bot.users = {user: {"access": access, "limit": limit} for user, access, limit in
+    #                  session.query(User.user_id, User.access, User.limit).all()}
     if not bot.users:
         bot.users = {config['OWNER_ID']: {"access": 100}}
     o_logger.debug(f'Loaded users: {", ".join(str(user) for user in bot.users.keys())}')
