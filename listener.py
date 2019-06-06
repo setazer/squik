@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-import argparse
 import logging
 
 import flask
@@ -24,15 +23,15 @@ def load_users():
     o_logger.debug(f'Loaded users: {", ".join(str(user) for user in bot.users.keys())}')
 
 
-parser = argparse.ArgumentParser()
-parser.add_argument('-d', '--debug', dest='debugging', action='store_true', help='Verbose output')
-args = parser.parse_args()
+# parser = argparse.ArgumentParser()
+# parser.add_argument('-d', '--debug', dest='debugging', action='store_true', help='Verbose output')
+# args = parser.parse_args()
 logging.Logger.propagate = False
 o_logger = logging.getLogger('OhaioPosterLogger')
 o_logger.propagate = False
-o_logger.setLevel(logging.DEBUG if args.debugging else logging.INFO)
-if args.debugging:
-    telebot.logger.setLevel(logging.DEBUG)
+# o_logger.setLevel(logging.DEBUG if args.debugging else logging.INFO)
+# if args.debugging:
+#     telebot.logger.setLevel(logging.DEBUG)
 o_fh = logging.FileHandler(config['LOG_FILE'])
 o_fh.setLevel(logging.DEBUG)
 o_fh.setFormatter(logging.Formatter("%(asctime)s %(levelname)s [Listener] %(message)s"))
