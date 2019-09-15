@@ -15,7 +15,7 @@ from config import config
 def gen_imgur_markup(url):
     markup = InlineKeyboardMarkup()
     markup.row(InlineKeyboardButton(text="Direct", url=url))
-    markup.row(InlineKeyboardButton(text="IQDB", url=f"http://iqdb.org/?url={url}"),
+    markup.row(InlineKeyboardButton(text="IQDB", callback_data=f"iqdb:{url}"), # url=f"http://iqdb.org/?url={url}"),
                InlineKeyboardButton(text="Google",
                                     url=f"https://www.google.com/searchbyimage?image_url={url}&hl=ru&newwindow=1"))
     markup.row(InlineKeyboardButton(text="Trace.moe", url=f"https://trace.moe/?url={url}"),
