@@ -40,7 +40,7 @@ class IqdbResults(UserList):
     def as_button_data(self):
         log.debug('\n'.join(str(item) for item in self.data))
         return [{'text': f"{item.similarity}% {iqdb_services.get(urlparse(url).netloc, 'Unknown')}", 'url': url}
-                for item in self.data for url in item.service_urls]
+                for item in filter(lambda x: not x.source,self.data) for url in item.service_urls]
 
 
 class IqdbResult:
